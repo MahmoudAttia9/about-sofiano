@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="theme-color" content="#0a0a0a">
+    <meta name="description" content="SOFIANO CAFE - Premium Coffee, Luxury Lounge & Takeaway">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Sofiano">
+    <title>SOFIANO CAFE - Coffee . Vibes . Take Away</title>
+    
+    <!-- Preload critical images for faster loading -->
+    <link rel="preload" href="assets/images/4.webp" as="image" type="image/webp" fetchpriority="high">
+    <link rel="preload" href="assets/images/5.webp" as="image" type="image/webp" fetchpriority="high">
+    <link rel="preload" href="assets/images/6.webp" as="image" type="image/webp">
+    <link rel="preload" href="assets/images/7.webp" as="image" type="image/webp">>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/images/1.png">
+    <link rel="apple-touch-icon" href="assets/images/1.png">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loader">
+            <img src="assets/images/1.png" alt="Sofiano" class="loader-logo">
+            <div class="loader-spinner"></div>
+        </div>
+    </div>
+
+    <!-- Immersive Full-Screen Background -->
+    <div class="immersive-bg">
+        <div class="bg-image"></div>
+        <div class="bg-gradient"></div>
+    </div>
+
+    <!-- App Container -->
+    <div class="app-container">
+        
+        <!-- Hero Section - Top 60% -->
+        <header class="hero-section">
+            <!-- Open Now Badge -->
+            <div class="status-badge" id="statusBadge">
+                <span class="status-dot"></span>
+                <span class="status-text">مفتوح الآن</span>
+            </div>
+            
+            <div class="logo-badge">
+                <img src="assets/images/1.png" alt="Sofiano Cafe">
+            </div>
+            
+            <div class="hero-text">
+                <span class="eyebrow">Premium Coffee Experience</span>
+                <h1 class="brand-name">
+                    <span class="word-sofiano">SOFIANO</span>
+                    <span class="word-cafe">CAFE</span>
+                </h1>
+                <p class="tagline">Coffee . Vibes . Take Away</p>
+            </div>
+        </header>
+
+        <!-- Bottom Sheet - Glassmorphic -->
+        <main class="bottom-sheet">
+            <div class="sheet-handle"></div>
+            
+            <!-- Menu Section -->
+            <div class="section-header">
+                <span class="section-label">SOFIANO MENU</span>
+                <h3 class="section-title">OUR MENU</h3>
+            </div>
+            
+            <!-- Menu Cards -->
+            <div class="menu-grid">
+                <a href="https://mahmoudattia9.github.io/Take-away-sofiano/" class="menu-card">
+                    <div class="card-glow"></div>
+                    <div class="card-icon">
+                        <i class="fas fa-shopping-bag"></i>
+                    </div>
+                    <div class="card-info">
+                        <h2>Takeaway</h2>
+                        <span>Order & Go</span>
+                    </div>
+                    <div class="card-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </a>
+                
+                <a href="https://mahmoudattia9.github.io/sofiano/" class="menu-card">
+                    <div class="card-glow"></div>
+                    <div class="card-icon">
+                        <i class="fas fa-mug-hot"></i>
+                    </div>
+                    <div class="card-info">
+                        <h2>Lounge</h2>
+                        <span>Dine In Menu</span>
+                    </div>
+                    <div class="card-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Social Section Header -->
+            <div class="section-header">
+                <span class="section-label">FOLLOW US</span>
+                <h3 class="section-title">SOCIAL MEDIA</h3>
+            </div>
+
+            <!-- Social Actions (Facebook, Instagram, TikTok, WhatsApp) -->
+            <div class="quick-actions">
+                <a href="https://www.facebook.com/profile.php?id=61581021861746" target="_blank" rel="noopener noreferrer" class="action-btn action-facebook">
+                    <i class="fab fa-facebook-f"></i>
+                    <span>Facebook</span>
+                </a>
+                <a href="https://www.instagram.com/mthnbnsfynw/" target="_blank" rel="noopener noreferrer" class="action-btn action-instagram">
+                    <i class="fab fa-instagram"></i>
+                    <span>Instagram</span>
+                </a>
+                <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" class="action-btn action-tiktok">
+                    <i class="fab fa-tiktok"></i>
+                    <span>TikTok</span>
+                </a>
+                <a href="https://wa.me/01070704509" target="_blank" rel="noopener noreferrer" class="action-btn action-whatsapp">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>WhatsApp</span>
+                </a>
+            </div>
+
+            <!-- Contact Row (Call & Location) -->
+            <div class="social-row">
+                <a href="tel:01070704509" aria-label="Call">
+                    <i class="fas fa-phone-alt"></i>
+                </a>
+                <a href="https://www.google.com/maps/place/%D8%B3%D9%88%D8%A8%D8%B1+%D9%85%D8%A7%D8%B1%D9%83%D8%AA+%D8%A8%D9%8A%D8%AA+%D8%A7%D9%84%D8%AC%D9%85%D9%84%D8%A9+-+%D8%A7%D9%84%D9%81%D9%84%D9%83%D9%8A%E2%80%AD/@31.2391807,29.9985476,17z" target="_blank" rel="noopener noreferrer" aria-label="Location">
+                    <i class="fas fa-map-marker-alt"></i>
+                </a>
+            </div>
+
+            <!-- Working Hours -->
+            <div class="working-hours">
+                <i class="fas fa-clock"></i>
+                <span>يومياً من 8 صباحاً - 2 مساءً</span>
+            </div>
+
+            <!-- Footer -->
+            <footer class="sheet-footer">
+                <p class="tagline-footer">Coffee . Vibes . Take Away</p>
+                <p class="address">
+                    <i class="fas fa-map-pin"></i>
+                    شارع 16 الملك - بجوار بيت الجملة | الفلكي
+                </p>
+            </footer>
+        </main>
+
+    </div>
+
+    <script src="assets/js/app.js"></script>
+</body>
+</html>

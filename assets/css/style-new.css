@@ -1,0 +1,665 @@
+/* ============================================
+   SOFIANO CAFE - Native App-Like Design
+   Immersive • Bottom Sheet • Premium UX
+============================================ */
+
+/* ============================================
+   CSS VARIABLES
+============================================ */
+:root {
+    /* Colors */
+    --dark-bg: #0a0a0a;
+    --dark-surface: #141414;
+    --dark-elevated: #1a1a1a;
+    
+    /* Soft Gold Palette */
+    --gold-primary: #C4A052;
+    --gold-light: #E8DCC0;
+    --gold-dark: #9A7B3A;
+    --gold-metallic: linear-gradient(135deg, #C4A052 0%, #E8DCC0 25%, #B8964B 50%, #E5D9BE 75%, #9A7B3A 100%);
+    --gold-text: linear-gradient(135deg, #C4A052 0%, #E8DCC0 50%, #9A7B3A 100%);
+    
+    /* Glass */
+    --glass-bg: rgba(20, 20, 20, 0.85);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-highlight: rgba(255, 255, 255, 0.05);
+    
+    /* Shadows */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.5);
+    --shadow-glow: 0 0 40px rgba(196, 160, 82, 0.15);
+    
+    /* Typography */
+    --font-main: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+    
+    /* Spacing */
+    --space-xs: 0.5rem;
+    --space-sm: 0.75rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    --space-2xl: 3rem;
+    
+    /* Radius */
+    --radius-sm: 12px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --radius-xl: 32px;
+    --radius-full: 9999px;
+    
+    /* Transitions */
+    --ease-out: cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --transition: all 0.3s var(--ease-out);
+    
+    /* Safe Areas for Mobile */
+    --safe-top: env(safe-area-inset-top, 0px);
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* ============================================
+   RESET & BASE
+============================================ */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-main);
+    background: var(--dark-bg);
+    color: #fff;
+    line-height: 1.5;
+    overflow-x: hidden;
+    min-height: 100vh;
+    min-height: 100dvh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================
+   IMMERSIVE BACKGROUND
+============================================ */
+.immersive-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    background-image: url('../images/coffe-beans.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.bg-overlay {
+    position: absolute;
+    inset: 0;
+    background: 
+        /* Vignette effect */
+        radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.4) 100%),
+        /* Bottom gradient for sheet */
+        linear-gradient(
+            to top,
+            rgba(10, 10, 10, 1) 0%,
+            rgba(10, 10, 10, 0.98) 15%,
+            rgba(10, 10, 10, 0.9) 30%,
+            rgba(10, 10, 10, 0.6) 50%,
+            rgba(10, 10, 10, 0.3) 70%,
+            transparent 100%
+        );
+}
+
+/* ============================================
+   APP CONTAINER
+============================================ */
+.app-container {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ============================================
+   HERO SECTION - Top Area
+============================================ */
+.hero-section {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-xl) var(--space-md);
+    padding-top: calc(var(--safe-top) + var(--space-xl));
+    text-align: center;
+    min-height: 45vh;
+}
+
+.brand-wrapper {
+    animation: fadeInDown 0.8s var(--ease-out);
+}
+
+/* Logo */
+.logo-float {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto var(--space-lg);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-lg), var(--shadow-glow);
+    animation: float 4s ease-in-out infinite;
+}
+
+.logo-float img {
+    width: 65%;
+    height: 65%;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 12px rgba(196, 160, 82, 0.3));
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+/* Typography */
+.hero-title {
+    font-size: clamp(3.5rem, 15vw, 6rem);
+    font-weight: 900;
+    letter-spacing: 8px;
+    background: var(--gold-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    margin-bottom: -0.1em;
+    text-shadow: 0 0 60px rgba(196, 160, 82, 0.3);
+}
+
+.hero-subtitle {
+    font-size: clamp(1.8rem, 8vw, 3rem);
+    font-weight: 300;
+    letter-spacing: 20px;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: var(--space-md);
+    margin-left: 10px;
+}
+
+.hero-tagline {
+    display: inline-block;
+    font-size: clamp(0.7rem, 2.5vw, 0.85rem);
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold-primary);
+    opacity: 0.8;
+    padding: var(--space-xs) var(--space-md);
+    border: 1px solid rgba(196, 160, 82, 0.3);
+    border-radius: var(--radius-full);
+}
+
+/* ============================================
+   BOTTOM SHEET - Glassmorphic Card
+============================================ */
+.bottom-sheet {
+    background: var(--glass-bg);
+    backdrop-filter: blur(40px) saturate(180%);
+    -webkit-backdrop-filter: blur(40px) saturate(180%);
+    border-top: 1px solid var(--glass-border);
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+    padding: var(--space-sm) var(--space-lg) var(--space-xl);
+    padding-bottom: calc(var(--safe-bottom) + var(--space-xl));
+    box-shadow: 0 -10px 60px rgba(0, 0, 0, 0.5);
+    animation: slideUp 0.6s var(--ease-out) 0.2s both;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Sheet Handle */
+.sheet-handle {
+    width: 40px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+    margin: 0 auto var(--space-lg);
+}
+
+/* ============================================
+   MENU CARDS - Side by Side
+============================================ */
+.menu-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+    margin-bottom: var(--space-lg);
+}
+
+.menu-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-lg) var(--space-md);
+    background: var(--glass-highlight);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    color: #fff;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    min-height: 140px;
+}
+
+.menu-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gold-metallic);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.menu-card:active {
+    transform: scale(0.97);
+}
+
+.menu-card:hover::before,
+.menu-card:focus::before {
+    opacity: 0.1;
+}
+
+.card-icon {
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, rgba(196, 160, 82, 0.2) 0%, rgba(196, 160, 82, 0.05) 100%);
+    border: 1px solid rgba(196, 160, 82, 0.3);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--space-sm);
+    transition: var(--transition);
+}
+
+.card-icon i {
+    font-size: 1.5rem;
+    color: var(--gold-light);
+    transition: var(--transition);
+}
+
+.menu-card:hover .card-icon,
+.menu-card:focus .card-icon {
+    background: var(--gold-metallic);
+    border-color: transparent;
+    transform: scale(1.05);
+}
+
+.menu-card:hover .card-icon i,
+.menu-card:focus .card-icon i {
+    color: #1a1a1a;
+}
+
+.card-content {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.card-content h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 2px;
+}
+
+.card-content p {
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.5);
+    letter-spacing: 0.5px;
+}
+
+.card-arrow {
+    display: none;
+}
+
+/* Card Variants */
+.card-takeaway {
+    border-color: rgba(196, 160, 82, 0.2);
+}
+
+.card-lounge {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* ============================================
+   QUICK ACTIONS - Horizontal Row
+============================================ */
+.quick-actions {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-xl);
+    margin-bottom: var(--space-lg);
+    padding: var(--space-md) 0;
+    border-top: 1px solid var(--glass-border);
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.action-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-xs);
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.7);
+    transition: var(--transition);
+    padding: var(--space-sm);
+    border-radius: var(--radius-md);
+}
+
+.action-btn i {
+    font-size: 1.3rem;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--glass-highlight);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-md);
+    transition: var(--transition);
+}
+
+.action-btn span {
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.action-btn:hover,
+.action-btn:focus {
+    color: var(--gold-light);
+}
+
+.action-btn:hover i,
+.action-btn:focus i {
+    background: rgba(196, 160, 82, 0.15);
+    border-color: rgba(196, 160, 82, 0.3);
+    transform: translateY(-2px);
+}
+
+.action-btn:active i {
+    transform: scale(0.95);
+}
+
+/* WhatsApp Accent */
+.action-whatsapp:hover i,
+.action-whatsapp:focus i {
+    background: rgba(37, 211, 102, 0.15);
+    border-color: rgba(37, 211, 102, 0.4);
+    color: #25D366;
+}
+
+/* ============================================
+   SOCIAL ROW - Minimalist Icons
+============================================ */
+.social-row {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-lg);
+    margin-bottom: var(--space-lg);
+}
+
+.social-icon {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    transition: var(--transition);
+    border-radius: var(--radius-full);
+    position: relative;
+}
+
+.social-icon i {
+    font-size: 1.2rem;
+    transition: var(--transition);
+}
+
+.social-icon::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: currentColor;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.social-icon:hover,
+.social-icon:focus {
+    color: #fff;
+}
+
+.social-icon:hover::before,
+.social-icon:focus::before {
+    opacity: 0.1;
+}
+
+.social-icon:active {
+    transform: scale(0.9);
+}
+
+/* Social Brand Colors on Hover */
+.social-icon[aria-label="Facebook"]:hover {
+    color: #1877F2;
+}
+
+.social-icon[aria-label="Instagram"]:hover {
+    color: #E4405F;
+}
+
+.social-icon[aria-label="TikTok"]:hover {
+    color: #fff;
+    text-shadow: -1px 0 #25f4ee, 1px 0 #fe2c55;
+}
+
+/* ============================================
+   SHEET FOOTER
+============================================ */
+.sheet-footer {
+    text-align: center;
+}
+
+.sheet-footer p {
+    font-size: 0.65rem;
+    color: rgba(255, 255, 255, 0.3);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* ============================================
+   ANIMATIONS
+============================================ */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Stagger animations */
+.menu-cards .menu-card {
+    animation: fadeInUp 0.5s var(--ease-out) both;
+}
+
+.menu-cards .menu-card:nth-child(1) { animation-delay: 0.3s; }
+.menu-cards .menu-card:nth-child(2) { animation-delay: 0.4s; }
+
+.quick-actions .action-btn {
+    animation: fadeInUp 0.4s var(--ease-out) both;
+}
+
+.quick-actions .action-btn:nth-child(1) { animation-delay: 0.5s; }
+.quick-actions .action-btn:nth-child(2) { animation-delay: 0.55s; }
+.quick-actions .action-btn:nth-child(3) { animation-delay: 0.6s; }
+
+.social-row .social-icon {
+    animation: fadeInUp 0.4s var(--ease-out) both;
+}
+
+.social-row .social-icon:nth-child(1) { animation-delay: 0.65s; }
+.social-row .social-icon:nth-child(2) { animation-delay: 0.7s; }
+.social-row .social-icon:nth-child(3) { animation-delay: 0.75s; }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================
+   RESPONSIVE - Tablet & Desktop
+============================================ */
+@media (min-width: 768px) {
+    .hero-section {
+        min-height: 50vh;
+    }
+    
+    .logo-float {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .hero-title {
+        letter-spacing: 12px;
+    }
+    
+    .hero-subtitle {
+        letter-spacing: 30px;
+    }
+    
+    .bottom-sheet {
+        max-width: 500px;
+        margin: 0 auto;
+        border-radius: var(--radius-xl);
+        margin-bottom: var(--space-xl);
+    }
+    
+    .menu-cards {
+        gap: var(--space-lg);
+    }
+    
+    .menu-card {
+        min-height: 160px;
+        padding: var(--space-xl) var(--space-lg);
+    }
+    
+    .card-icon {
+        width: 64px;
+        height: 64px;
+    }
+    
+    .card-icon i {
+        font-size: 1.75rem;
+    }
+    
+    .card-content h3 {
+        font-size: 1.1rem;
+    }
+}
+
+/* Large screens */
+@media (min-width: 1024px) {
+    .hero-section {
+        min-height: 55vh;
+    }
+    
+    .bottom-sheet {
+        max-width: 550px;
+    }
+    
+    .menu-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-lg);
+    }
+}
+
+/* ============================================
+   ACCESSIBILITY
+============================================ */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+.menu-card:focus-visible,
+.action-btn:focus-visible,
+.social-icon:focus-visible {
+    outline: 2px solid var(--gold-primary);
+    outline-offset: 3px;
+}
+
+/* ============================================
+   DARK MODE SCROLLBAR
+============================================ */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--dark-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* ============================================
+   SELECTION
+============================================ */
+::selection {
+    background: rgba(196, 160, 82, 0.3);
+    color: #fff;
+}
