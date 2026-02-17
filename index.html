@@ -941,8 +941,8 @@
 
             <!-- Menu Section -->
             <div class="section-header">
-                <span class="section-label">SOFIANO MENU</span>
-                <h3 class="section-title">OUR MENU</h3>
+                <span class="section-label" data-en="SOFIANO MENU" data-ar="قائمة سفيانو">SOFIANO MENU</span>
+                <h3 class="section-title" data-en="OUR MENU" data-ar="القائمة">OUR MENU</h3>
             </div>
 
             <!-- Menu Cards -->
@@ -957,8 +957,8 @@
                         </svg>
                     </div>
                     <div class="card-info">
-                        <h2>Takeaway</h2>
-                        <span>Order & Go</span>
+                        <h2 data-en="Takeaway" data-ar="تيك أواي">Takeaway</h2>
+                        <span data-en="Order & Go" data-ar="اطلب واستلم">Order & Go</span>
                     </div>
                     <div class="card-arrow">
                         <svg viewBox="0 0 448 512" aria-hidden="true">
@@ -978,8 +978,8 @@
                         </svg>
                     </div>
                     <div class="card-info">
-                        <h2>Lounge</h2>
-                        <span>Dine In Menu</span>
+                        <h2 data-en="Lounge" data-ar="صالة الجلوس">Lounge</h2>
+                        <span data-en="Dine In Menu" data-ar="منيو الصالة">Dine In Menu</span>
                     </div>
                     <div class="card-arrow">
                         <svg viewBox="0 0 448 512" aria-hidden="true">
@@ -999,8 +999,8 @@
                         </svg>
                     </div>
                     <div class="card-info">
-                        <h2>Sofiano Beans</h2>
-                        <span>Premium Beans</span>
+                        <h2 data-en="Sofiano Beans" data-ar="مطاحن سفيانو">Sofiano Beans</h2>
+                        <span data-en="Premium Beans" data-ar="بن فاخر">Premium Beans</span>
                     </div>
                     <div class="card-arrow">
                         <svg viewBox="0 0 448 512" aria-hidden="true">
@@ -1013,8 +1013,8 @@
 
             <!-- Social Section Header -->
             <div class="section-header">
-                <span class="section-label">FOLLOW US</span>
-                <h3 class="section-title">SOCIAL MEDIA</h3>
+                <span class="section-label" data-en="FOLLOW US" data-ar="تابعنا">FOLLOW US</span>
+                <h3 class="section-title" data-en="SOCIAL MEDIA" data-ar="وسائل التواصل">SOCIAL MEDIA</h3>
             </div>
 
             <!-- Social Actions -->
@@ -1105,13 +1105,29 @@
     <!-- Ultra-Fast Inline JS - No external request needed -->
     <script>
         /* ============================================
-           SOFIANO CAFE - Ultra Performance JS
+           سفيانو كافيه - Ultra Performance JS
            Zero external dependencies
         ============================================ */
 
         // Immediate execution - no DOMContentLoaded wait for critical path
         const bgEl = document.querySelector('.bg-image');
         const loadScreen = document.getElementById('loadingScreen');
+
+        // Language Detection & Auto-Translation
+        (function initLanguage() {
+            const userLang = navigator.language || navigator.userLanguage;
+            const isArabic = userLang.startsWith('ar');
+            
+            if (isArabic) {
+                document.documentElement.setAttribute('lang', 'ar');
+                document.documentElement.setAttribute('dir', 'rtl');
+                
+                // Translate all elements with data-ar attribute
+                document.querySelectorAll('[data-ar]').forEach(function(el) {
+                    el.textContent = el.getAttribute('data-ar');
+                });
+            }
+        })();
 
         // Status Badge - runs immediately
         (function initStatus() {
